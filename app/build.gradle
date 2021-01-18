@@ -3,6 +3,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+        storeFile file('A:\\WeiYun\\sync\\KeyStore\\SV3.jks')
+            storePassword 'Soleproprietor5'
+            keyAlias 'SV3'
+            keyPassword 'Soleproprietor3'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -14,6 +22,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
     }
 
     buildTypes {
@@ -26,6 +35,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+        exclude 'classes.dex'
+        exclude '**.**'
+    }
+
 }
 
 dependencies {
